@@ -5,7 +5,7 @@ const Resume = () => {
   const handleDownloadResume = () => {
     // Create a link to download the resume PDF
     const link = document.createElement('a');
-    link.href = 'https://raw.githubusercontent.com/shivan2004/portfolio/refs/heads/master/public/shivan-resume.pdf'; // You'll need to add this file to the public folder
+    link.href = 'public/shivan-resume.pdf'; // You'll need to add this file to the public folder
     link.download = 'Shivan_Samala_Resume.pdf';
     document.body.appendChild(link);
     link.click();
