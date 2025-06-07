@@ -1,11 +1,10 @@
 import React from 'react';
 import { Download, ExternalLink, GraduationCap, Briefcase, Award, Code } from 'lucide-react';
-//todo; download resume pdf
+
 const Resume = () => {
   const handleDownloadResume = () => {
-    // Create a link to download the resume PDF
     const link = document.createElement('a');
-    link.href = 'public/shivan-resume.pdf'; // You'll need to add this file to the public folder
+    link.href = 'https://drive.google.com/uc?export=download&id=1KpeYNK0U3EcycBndbjdZ64x_kZnh4J6_';
     link.download = 'Shivan_Samala_Resume.pdf';
     document.body.appendChild(link);
     link.click();

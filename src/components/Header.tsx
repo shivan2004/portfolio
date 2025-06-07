@@ -27,9 +27,12 @@ const Header = () => {
     }`}>
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-blue-800">
+          <button
+              onClick={() => (window.location.href = '/')}
+              className="text-2xl font-bold text-blue-800 hover:no-underline"
+          >
             Shivan Samala
-          </div>
+          </button>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">

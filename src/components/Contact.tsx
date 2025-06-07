@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Linkedin, Github, Twitter, Instagram } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,13 +17,25 @@ const Contact = () => {
     });
   };
 
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    //todo; send mail
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
+
+    emailjs
+        .send(
+            import.meta.env.VITE_EMAILJS_SERVICE_ID,
+            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+            formData,
+            import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        )
+        .then(() => {
+          // alert('Message sent successfully!');
+          setFormData({ name: '', email: '', subject: '', message: '' });
+        })
+        .catch((e) => {
+          console.error('Email sending failed:', e);
+          alert('Failed to send message. Please try again later.');
+        });
   };
 
   return (
@@ -32,14 +45,14 @@ const Contact = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900">
             Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600">Touch</span>
           </h2>
-          
+
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Let's Connect</h3>
                 <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                  I'm always open to discussing new opportunities, interesting projects, 
+                  I'm always open to discussing new opportunities, interesting projects,
                   or just having a conversation about technology. Feel free to reach out!
                 </p>
               </div>
